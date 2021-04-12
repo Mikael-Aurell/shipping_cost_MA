@@ -1,20 +1,39 @@
 package se.lexicon.shipping_cost.entity;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 public class Box {
     @Id
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID",
+    strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(nullable = false, updatable = false)
     private String id;
+    @Column(nullable = false, length = 100)
     private String name;
+    @Column(nullable = false, length = 50)
     private String country;
+    @Column(nullable = false, length = 20)
     private String type;
+    @Column(nullable = false)
     private double cost;
+    @Column(nullable = false)
     private double weight;
+    @Column(nullable = false, length = 20)
     private String weightType;
+    @CreationTimestamp
+    @Column(nullable = false, columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP")
     private LocalDateTime createDate;
+    @Column(nullable = false, columnDefinition = "tinyint(1) default 1")
     private boolean status;
 
     public Box() {
@@ -113,6 +132,19 @@ public class Box {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Box box = (Box) o;
+        return Double.compare(box.cost, cost) == 0 && Double.compare(box.weight, weight) == 0 && status == box.status && Objects.equals(id, box.id) && Objects.equals(name, box.name) && Objects.equals(country, box.country) && Objects.equals(type, box.type) && Objects.equals(weightType, box.weightType) && Objects.equals(createDate, box.createDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, country, type, cost, weight, weightType, createDate, status);
     }
 
     @Override
