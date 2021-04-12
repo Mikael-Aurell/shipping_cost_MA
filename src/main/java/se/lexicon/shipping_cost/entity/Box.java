@@ -1,17 +1,21 @@
 package se.lexicon.shipping_cost.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
 
+@Entity
 public class Box {
-    String id;
-    String name;
-    String country;
-    String type;
-    double cost;
-    double weight;
-    String weightType;
-    LocalDateTime createDate;
-    boolean status;
+    @Id
+    private String id;
+    private String name;
+    private String country;
+    private String type;
+    private double cost;
+    private double weight;
+    private String weightType;
+    private LocalDateTime createDate;
+    private boolean status;
 
     public Box() {
     }
