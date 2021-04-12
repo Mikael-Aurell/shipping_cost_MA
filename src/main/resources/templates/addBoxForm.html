@@ -32,6 +32,15 @@
                     <label>Name</label>
                     <input type="text" th:field="*{name}" class="form-control" placeholder="Enter text here...">
                 </div>
+
+                <!--<div th:if="${#fields.hasErrors('name')}">
+                    <ul class="p-0">
+                        <li th:each="err : ${#fields.errors('name')}">
+                            <span class="form-error" th:text="${err}"></span>
+                        </li>
+                    </ul>
+                </div>-->
+
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" th:field="*{type}" name="exampleRadios" value="letter" checked>
                     <label class="form-check-label" >
