@@ -14,9 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
 @Controller
-@RequestMapping("admin/box")
+@RequestMapping("shipping")
 public class ShippingController {
 
 
@@ -29,25 +28,26 @@ public class ShippingController {
 
     private List<Box> boxList = new ArrayList<>();
 
- @GetMapping("list")
- public String getAll(Model model){
-     List<Box> boxListFromRep = findAll();
-     model.addAttribute("boxListFromRep", boxListFromRep);
+    @GetMapping("/list")
+    public String getAll(Model model) {
 
-    return "boxList";
- }
+        model.addAttribute("boxList", findAll());
 
- @GetMapping("addBox")
-    public String registerForm(Model model){
-     Box box = new Box();
-     model.addAttribute("box", box);
-     return "addBoxForm";
+        return "showBoxList";
     }
 
-    @PostMapping("add")
-    public String add(@ModelAttribute("box") Box box){
-     boxRepository.save(box);
-     return "redirect:/admin/box/list";
+    @GetMapping("/addBox")
+    public String registerForm(Model model) {
+        Box box = new Box();
+        model.addAttribute("box", box);
+        return "addBoxForm";
+    }
+
+    @PostMapping("/add")
+    public String add(@ModelAttribute("box") Box box) {
+        boxRepository.save(box);
+        System.out.println("box = " + box);
+        return "redirect:/shipping/list";
     }
 
     List<Box> findAll() {

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Made by MOS</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} "/>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+    <style>
+        body {
+            padding-top: 60px;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav th:insert="fragments/navbar :: nav_fragment" />
+
+<div class="card">
+    <div class="card-header card bg-info text-white">
+        <h2>Show Box List</h2>
+    </div>
+
+
+    <div th:if="${boxList.isEmpty()}">
+        No product Available.
+    </div>
+    <div class="card-body">
+
+        <div class="container">
+            <div class="row" th:unless="${boxList.isEmpty()}">
+
+                <div class="col-lg-4 col-md-6 mb-4" th:each="aBox : ${boxList}">
+
+                        <div class="card-body">
+                            <h4 class="card-title">
+
+                            </h4>
+                            <a href="#"><span th:text="${aBox.id}"></span></a>
+                            <p class="card-text"><span th:text="${aBox.name}"></span></p>
+                            <p class="card-text"><span th:number="${aBox.weight}"></span>
+                            <p class="card-text"><span th:text="${aBox.country}"></span></p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9733;</small>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <button type="button" class="btn btn-outline-danger">Back</button>
+
+    </div>
+</div>
+<footer th:insert="fragments/footer :: footer_fragment" />
+</body>
+</html>

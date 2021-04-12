@@ -31,7 +31,7 @@ public class Box {
     @Column(nullable = false, length = 20)
     private String weightType;
     @CreationTimestamp
-    @Column(nullable = false, columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP")
+    @Column(columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP")
     private LocalDateTime createDate;
     @Column(nullable = false, columnDefinition = "tinyint(1) default 1")
     private boolean status;
