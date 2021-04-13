@@ -30,7 +30,7 @@ public class ShippingController {
         this.boxRepository = boxRepository;
     }
 
-    private List<Box> boxList = new ArrayList<>();
+    //private List<Box> boxList = new ArrayList<>();
 
     @GetMapping("/list")
     public String getAll(Model model) {

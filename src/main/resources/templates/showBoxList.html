@@ -30,55 +30,43 @@
         No product Available.
     </div>
     <div class="card-body">
-
+        <h4 class="card-title">Boxes</h4>
         <div class="container">
-            <div class="row" th:unless="${boxList.isEmpty()}">
-
-                <div class="col-lg-4 col-md-6 mb-4" th:each="aBox : ${boxList}">
-
-                    <div class="card-body">
-                        <h4 class="card-title">
-
-                        </h4>
-                        <table class="table-striped">
-                            <thead>
-                            <tr class="mb-4">
-                                <th>Id</th>
-                                <th>Name</th>
-                                <th>Weight</th>
-                                <th>Country</th>
-                                <th>Cost</th>
-                            </tr>
-                            </thead>
+            <table class="table-striped">
+                <thead>
+                <tr class="mb-4">
+                    <th class="row-cols-md-8">Id</th>
+                    <th>Name</th>
+                    <th>Weight</th>
+                    <th>Country</th>
+                    <th>Cost</th>
+                </tr>
+                </thead>
+                <div class="row" th:unless="${boxList.isEmpty()}">
+                    <!--class="col-lg-4 col-md-12 mb-4"-->
+                    <div th:each="aBox : ${boxList}">
+                        <div class="card-body">
                             <tbody>
-                            <tr class="mb-4">
-                                <td th:text="${aBox.id}"></span></td>
-                                <td th:text="${aBox.name}"></td>
-                                <td th:text="${aBox.weight}"></td>
-                                <td th:text="${aBox.country}"></td>
-                                <td th:text="${aBox.cost}"></td>
-                            </tr>
+                                <tr class="mb-4">
+                                    <td th:text="${aBox.id}"></td>
+                                    <td th:text="${aBox.name}"></td>
+                                    <td th:text="${aBox.weight}"></td>
+                                    <td th:text="${aBox.country}"></td>
+                                    <td th:text="${aBox.cost}"></td>
+                                </tr>
                             </tbody>
-                        </table>
-
-                        <!--<a href="#"><span th:text="${aBox.id}" hidden></span></a>
-                        <p class="card-text"><span th:text="${aBox.name}"></span></p>
-                        <p class="card-text"><span th:number="${aBox.weight}"></span>
-                        <p class="card-text"><span th:text="${aBox.country}"></span></p>
-                        <p class="card-text"><span th:text="${aBox.cost}"></span></p>-->
+                        </div>
+                        <!--<div class="card-footer">
+                           -
+                        </div>-->
 
                     </div>
-                    <div class="card-footer">
-                        <!--<small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9733;</small>-->
-                    </div>
-
                 </div>
-            </div>
+            </table>
         </div>
     </div>
     <div class="card-footer">
         <button type="button" class="btn btn-outline-danger">Back</button>
-
     </div>
 </div>
 <footer th:insert="fragments/footer :: footer_fragment"/>
