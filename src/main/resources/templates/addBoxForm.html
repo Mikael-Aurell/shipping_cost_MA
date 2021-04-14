@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Made by MOS</title>
-
-    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} "/>
-    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-
+<head th:insert="fragments/headerResources :: header_resources">
     <style>
         body {
             padding-top: 100px;
@@ -81,10 +73,7 @@
             </form>
 
         </div>
-        <div class="card-footer">
-            <button type="button" class="btn btn-outline-danger">Back</button>
-
-        </div>
+        <cardFooter th:insert="fragments/cardFooter :: cardFooter_fragment"></cardFooter>
     </div>
 </div>
 

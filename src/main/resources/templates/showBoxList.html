@@ -1,74 +1,54 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Made by MOS</title>
-
-    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} "/>
-    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-
+<head th:insert="fragments/headerResources :: header_resources">
     <style>
         body {
-            padding-top: 60px;
+            padding-top: 100px;
+            padding-bottom: 60px;
         }
     </style>
 </head>
 
 <body>
+    <nav th:insert="fragments/navbar :: nav_fragment"/>
 
-<nav th:insert="fragments/navbar :: nav_fragment"/>
-
-<div class="card">
-    <div class="card-header card bg-info text-white">
-        <h2>Show Box List</h2>
-    </div>
-
-
-    <div th:if="${boxList.isEmpty()}">
-        No product Available.
-    </div>
-    <div class="card-body">
-        <h4 class="card-title">Boxes</h4>
-        <div class="container">
-            <table class="table-striped">
-                <thead>
-                <tr class="mb-4">
-                    <th class="row-cols-md-8">Id</th>
-                    <th>Name</th>
-                    <th>Weight</th>
-                    <th>Country</th>
-                    <th>Cost</th>
-                </tr>
-                </thead>
-                <div class="row" th:unless="${boxList.isEmpty()}">
-                    <!--class="col-lg-4 col-md-12 mb-4"-->
-                    <div th:each="aBox : ${boxList}">
-                        <div class="card-body">
-                            <tbody>
-                                <tr class="mb-4">
-                                    <td th:text="${aBox.id}"></td>
-                                    <td th:text="${aBox.name}"></td>
-                                    <td th:text="${aBox.weight}"></td>
-                                    <td th:text="${aBox.country}"></td>
-                                    <td th:text="${aBox.cost}"></td>
-                                </tr>
-                            </tbody>
+    <div class="card" >
+        <div class="card-header card bg-info text-white"><h2>Show Box List</h2></div>
+        <div class="card-body">
+            <h4 class="card-title">Boxes</h4>
+            <div class="container">
+                <table class="table-striped">
+                    <thead>
+                    <tr class="mb-4">
+                        <th class="row-cols-md-8">Id</th>
+                        <th>Name</th>
+                        <th>Weight</th>
+                        <th>Country</th>
+                        <th>Cost</th>
+                    </tr>
+                    </thead>
+                    <div th:if="${boxList.isEmpty()}"> No product Available. </div>
+                    <div class="row" th:unless="${boxList.isEmpty()}">
+                        <div th:each="aBox : ${boxList}">
+                            <div class="card-body">
+                                <tbody>
+                                    <tr class="mb-4">
+                                        <td th:text="${aBox.id}"></td>
+                                        <td th:text="${aBox.name}"></td>
+                                        <td th:text="${aBox.weight}"></td>
+                                        <td th:text="${aBox.country}"></td>
+                                        <td th:text="${aBox.cost}"></td>
+                                    </tr>
+                                </tbody>
+                            </div>
                         </div>
-                        <!--<div class="card-footer">
-                           -
-                        </div>-->
-
                     </div>
-                </div>
-            </table>
+                </table>
+            </div>
         </div>
+        <cardFooter th:insert="fragments/cardFooter :: cardFooter_fragment"></cardFooter>
     </div>
-    <div class="card-footer">
-        <button type="button" class="btn btn-outline-danger">Back</button>
-    </div>
-</div>
-<footer th:insert="fragments/footer :: footer_fragment"/>
+
+    <footer th:insert="fragments/footer :: footer_fragment"/>
 </body>
 </html>

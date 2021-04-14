@@ -1,29 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Made by MOS</title>
-
-    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} "/>
-    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-
-    <style>
-        body {
-            padding-top: 60px;
-        }
-    </style>
-</head>
+<head th:insert="fragments/headerResources :: header_resources"></head>
 
 <body>
-
-<nav th:insert="fragments/navbar :: nav_fragment" />
-
-<div class="container p-3 my-3 bg-primary text-white">
-    Index Page
-</div>
-
-<footer th:insert="fragments/footer :: footer_fragment" />
+    <nav th:insert="fragments/navbar :: nav_fragment"/>
+    <div class="container p-3 my-3 bg-warning text-black-50">
+        <card>
+            <card-header ><h2>HOME</h2></card-header>
+            <card-body class="bg-light text-black"> <p>Click Add Shipping to add a box and see the cost of shipping.</p></card-body>
+            <cardFooter th:insert="fragments/cardFooter :: cardFooter_fragment"></cardFooter>
+        </card>
+    </div>
+    <footer th:insert="fragments/footer :: footer_fragment"/>
 </body>
 </html>

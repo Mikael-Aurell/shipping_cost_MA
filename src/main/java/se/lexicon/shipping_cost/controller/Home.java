@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class Home {
     @RequestMapping("/")
     public String goToIndexPage(){
-        System.out.println("####### goToIndexPage");
         return "index";
     }
 }
